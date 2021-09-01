@@ -51,65 +51,93 @@
 	
 		
 		//ADMIN0 MAPS
-		$.getJSON("https://spreadsheets.google.com/feeds/list/1IhEOJo2kSCS49qOYbwhQbNIaqMdMwI29L_P4Jf6_nFc/od6/public/values?alt=json", function(data) {
+		$.getJSON("https://sheets.googleapis.com/v4/spreadsheets/1IhEOJo2kSCS49qOYbwhQbNIaqMdMwI29L_P4Jf6_nFc/values/CartesAdmin0?alt=json&key=AIzaSyDOrhWBRhua2tHle2kC8dp1b3FIVZTmMK8", function(data) {
 
-			result = data.feed.entry;
+			result = data.values;
 			var nbMaps = 0;
 
-			$.each(result, function(i, field){
-                $("#AllAdmin0").append("<div class='col-md-3 col-sm-3 col-height-3'><div class='tnmap'><div class='image'><a href='assets/admin0/pdf/"  + field.gsx$link.$t + ".pdf' target='_blank' ><img  class='miniature' src='assets/admin0/img/" + field.gsx$image.$t + ".jpg' alt='"  + field.gsx$admin0namefr.$t  +   "-Map'></a></div><a href='assets/admin0/pdf/"  + field.gsx$link.$t + ".pdf' target='_blank' ><h3>" + field.gsx$admin0namefr.$t + "</h3></a><hr/><aside>" + field.gsx$titre.$t + "</aside></div></div></div></div>");
-                $("#Allmaps").append("<div class='col-md-3 col-sm-3 col-height-3'><div class='tnmap'><div class='image'><a href='assets/admin0/pdf/"  + field.gsx$link.$t + ".pdf' target='_blank' ><img  class='miniature' src='assets/admin0/img/" + field.gsx$image.$t + ".jpg' alt='"  + field.gsx$admin0namefr.$t  +   "-Map'></a></div><a href='assets/admin0/pdf/"  + field.gsx$link.$t + ".pdf' target='_blank' ><h3>" + field.gsx$admin0namefr.$t + "</h3></a><hr/><aside>" + field.gsx$titre.$t + "</aside></div></div>");
+            for (i = 1; i < result.length; i++) {
+                admin0Name_fr=result[i][0]
+                admin0Pcode=result[i][1]
+                link=result[i][2]	
+                image=result[i][3]	
+                titre=result[i][4]
+
+                $("#AllAdmin0").append("<div class='col-md-3 col-sm-3 col-height-3'><div class='tnmap'><div class='image'><a href='assets/admin0/pdf/"  + link + ".pdf' target='_blank' ><img  class='miniature' src='assets/admin0/img/" + image + ".jpg' alt='"  + admin0Name_fr  +   "-Map'></a></div><a href='assets/admin0/pdf/"  + link + ".pdf' target='_blank' ><h3>" + admin0Name_fr + "</h3></a><hr/><aside>" + titre + "</aside></div></div></div></div>");
+                $("#Allmaps").append("<div class='col-md-3 col-sm-3 col-height-3'><div class='tnmap'><div class='image'><a href='assets/admin0/pdf/"  + link + ".pdf' target='_blank' ><img  class='miniature' src='assets/admin0/img/" + image + ".jpg' alt='"  + admin0Name_fr  +   "-Map'></a></div><a href='assets/admin0/pdf/"  + link + ".pdf' target='_blank' ><h3>" + admin0Name_fr + "</h3></a><hr/><aside>" + titre + "</aside></div></div>");
                 nbMaps++;
-			});
+
+            }
 			
 			$("#countAdmin0").html("<figure data-from='1' data-to='"+nbMaps+"'>1</figure><aside>Pays</aside><aside class='numbers-admin-s'>(Admin 0)</aside><div class='separator'></div>");
 
 		});
 		
 		//ADMIN1 MAPS
-		$.getJSON("https://spreadsheets.google.com/feeds/list/1pxqo3Ygbu58_daF_feyVM-DtB0R6BD6X_S8Cyt6K5z8/od6/public/values?alt=json", function(data) {
+		$.getJSON("https://sheets.googleapis.com/v4/spreadsheets/1pxqo3Ygbu58_daF_feyVM-DtB0R6BD6X_S8Cyt6K5z8/values/CartesAdmin1?alt=json&key=AIzaSyDOrhWBRhua2tHle2kC8dp1b3FIVZTmMK8", function(data) {
 
-			result = data.feed.entry;
+			result = data.values;
 			var nbMaps = 0;
 
-			$.each(result, function(i, field){
-				$("#Allmaps").append("<div class='col-md-3 col-sm-3 col-height-3'><div class='tnmap'><div class='image'><a href='assets/admin1/pdf/"  + field.gsx$link.$t + ".pdf' target='_blank' ><img  class='miniature' src='assets/admin1/img/" + field.gsx$image.$t + ".jpg' alt='"  + field.gsx$admin1namefr.$t  +   "-Map'></a></div><a href='assets/admin1/pdf/"  + field.gsx$link.$t + ".pdf' target='_blank' ><h3>" + field.gsx$admin1namefr.$t + "</h3></a><hr/><aside>" + field.gsx$titre.$t + "  </aside></div></div>");
-				$("#AllAdmin1").append("<div class='col-md-3 col-sm-3 col-height-3'><div class='tnmap'><div class='image'><a href='assets/admin1/pdf/"  + field.gsx$link.$t + ".pdf' target='_blank' ><img  class='miniature' src='assets/admin1/img/" + field.gsx$image.$t + ".jpg' alt='"  + field.gsx$admin1namefr.$t  +   "-Map'></a></div><a href='assets/admin1/pdf/"  + field.gsx$link.$t + ".pdf' target='_blank' ><h3>" + field.gsx$admin1namefr.$t + "</h3></a><hr/><aside>" + field.gsx$titre.$t + "  </aside></div></div>");
+            for (i = 1; i < result.length; i++) {
+                admin0Name_fr=result[i][0]
+                admin0Pcode=result[i][1]
+                admin1Name_fr=result[i][2]
+                link=result[i][3]	
+                image=result[i][4]		
+                titre=result[i][6]
+
+                $("#Allmaps").append("<div class='col-md-3 col-sm-3 col-height-3'><div class='tnmap'><div class='image'><a href='assets/admin1/pdf/"  + link + ".pdf' target='_blank' ><img  class='miniature' src='assets/admin1/img/" + image + ".jpg' alt='"  + admin1Name_fr  +   "-Map'></a></div><a href='assets/admin1/pdf/"  + link + ".pdf' target='_blank' ><h3>" + admin1Name_fr + "</h3></a><hr/><aside>" + titre + "  </aside></div></div>");
+				$("#AllAdmin1").append("<div class='col-md-3 col-sm-3 col-height-3'><div class='tnmap'><div class='image'><a href='assets/admin1/pdf/"  + link + ".pdf' target='_blank' ><img  class='miniature' src='assets/admin1/img/" + image + ".jpg' alt='"  + admin1Name_fr  +   "-Map'></a></div><a href='assets/admin1/pdf/"  + link + ".pdf' target='_blank' ><h3>" + admin1Name_fr + "</h3></a><hr/><aside>" + titre + "  </aside></div></div>");
 				nbMaps++;
-			});
+
+            }
 			
 			$("#countAdmin1").html("<figure data-from='1' data-to='"+nbMaps+"'>1</figure><aside>Divisions administratives niveau 1</aside><aside class='numbers-admin-s'>(Admin 1)</aside><div class='separator'></div>");
 			
 		});
 
         //ADMIN2 MAPS
-		$.getJSON("https://spreadsheets.google.com/feeds/list/1wmbhenIaGqU1eNS-yfFIdQ1CumMutG7QC5n_vDCPaEg/od6/public/values?alt=json", function(data) {
+		$.getJSON("https://sheets.googleapis.com/v4/spreadsheets/1wmbhenIaGqU1eNS-yfFIdQ1CumMutG7QC5n_vDCPaEg/values/CartesAdmin2?alt=json&key=AIzaSyDOrhWBRhua2tHle2kC8dp1b3FIVZTmMK8", function(data) {
 	
-			result = data.feed.entry;
+			result = data.values;
 			var nbMaps = 0;
+            for (i = 1; i < result.length; i++) {
+                admin2Name=result[i][0]
+                admin2Pcode=result[i][1]
+                link=result[i][2]
+                image=result[i][3]
+                titre=result[i][4]
 
-			$.each(result, function(i, field){
-				$("#Allmaps").append("<div class='col-md-3 col-sm-3 col-height-3'><div class='tnmap'><div class='image'><a href='assets/admin2/pdf/"  + field.gsx$link.$t + ".pdf' target='_blank' ><img  class='miniature' src='assets/admin2/img/" + field.gsx$image.$t + ".jpg' alt='"  + field.gsx$admin2name.$t  +   "-Map'></a></div><a href='assets/admin2//pdf/"  + field.gsx$link.$t + ".pdf' target='_blank' ><h3>" + field.gsx$admin2name.$t + "</h3></a><hr/><aside>" + field.gsx$titre.$t + " </aside></div></div>");
-				$("#AllAdmin2").append("<div class='col-md-3 col-sm-3 col-height-3'><div class='tnmap'><div class='image'><a href='assets/admin2/pdf/"  + field.gsx$link.$t + ".pdf' target='_blank' ><img  class='miniature' src='assets/admin2/img/" + field.gsx$image.$t + ".jpg' alt='"  + field.gsx$admin2name.$t  +   "-Map'></a></div><a href='assets/admin2//pdf/"  + field.gsx$link.$t + ".pdf' target='_blank' ><h3>" + field.gsx$admin2name.$t + "</h3></a><hr/><aside>" + field.gsx$titre.$t + "  </aside></div></div>");
+                $("#Allmaps").append("<div class='col-md-3 col-sm-3 col-height-3'><div class='tnmap'><div class='image'><a href='assets/admin2/pdf/"  + link + ".pdf' target='_blank' ><img  class='miniature' src='assets/admin2/img/" + image + ".jpg' alt='"  + admin2Name  +   "-Map'></a></div><a href='assets/admin2//pdf/"  + link + ".pdf' target='_blank' ><h3>" + admin2Name + "</h3></a><hr/><aside>" + titre + " </aside></div></div>");
+				$("#AllAdmin2").append("<div class='col-md-3 col-sm-3 col-height-3'><div class='tnmap'><div class='image'><a href='assets/admin2/pdf/"  + link + ".pdf' target='_blank' ><img  class='miniature' src='assets/admin2/img/" + image + ".jpg' alt='"  + admin2Name  +   "-Map'></a></div><a href='assets/admin2//pdf/"  + link + ".pdf' target='_blank' ><h3>" + admin2Name + "</h3></a><hr/><aside>" + titre + "  </aside></div></div>");
 				nbMaps++;
-			});
+            }
+
 			
 			$("#countAdmin2").html("<figure data-from='1' data-to='"+nbMaps+"'>1</figure><aside>Divisions administratives niveau 2</aside><aside class='numbers-admin-s'>(Admin 2)</aside><div class='separator'></div>");
 			
 		});
 
         //ADMIN3 MAPS
-		$.getJSON("https://spreadsheets.google.com/feeds/list/159WtWvm3cLl0u-GFgbYrVVl-F2k-4OKfvIXgakUaec8/od6/public/values?alt=json", function(data) {
-            console.log("test admin3");
-            result = data.feed.entry;
+		$.getJSON("https://sheets.googleapis.com/v4/spreadsheets/159WtWvm3cLl0u-GFgbYrVVl-F2k-4OKfvIXgakUaec8/values/CartesAdmin?alt=json&key=AIzaSyDOrhWBRhua2tHle2kC8dp1b3FIVZTmMK8", function(data) {
+
+            result = data.values;
             var nbMaps = 0;
 
-            $.each(result, function(i, field){
-                $("#Allmaps").append("<div class='col-md-3 col-sm-3 col-height-3'><div class='tnmap'><div class='image'><a href='assets/admin3/pdf/"  + field.gsx$link.$t + ".pdf' target='_blank' ><img  class='miniature' src='assets/admin3/img/" + field.gsx$image.$t + ".jpg' alt='"  + field.gsx$adminname.$t  +   "-Map'></a></div><a href='assets/admin3//pdf/"  + field.gsx$link.$t + ".pdf' target='_blank' ><h3>" + field.gsx$adminname.$t + "</h3></a><hr/><aside>" + field.gsx$titre.$t + " </aside></div></div>");
-                $("#AllAdmin3").append("<div class='col-md-3 col-sm-3 col-height-3'><div class='tnmap'><div class='image'><a href='assets/admin3/pdf/"  + field.gsx$link.$t + ".pdf' target='_blank' ><img  class='miniature' src='assets/admin3/img/" + field.gsx$image.$t + ".jpg' alt='"  + field.gsx$adminname.$t  +   "-Map'></a></div><a href='assets/admin3//pdf/"  + field.gsx$link.$t + ".pdf' target='_blank' ><h3>" + field.gsx$adminname.$t + "</h3></a><hr/><aside>" + field.gsx$titre.$t + "  </aside></div></div>");
-                nbMaps++;
-            });
+            for (i = 1; i < result.length; i++) {
+                adminName=result[i][0]
+                adminPcode=result[i][1]
+                link=result[i][2]
+                image=result[i][3]
+                titre=result[i][4]
 
+
+                $("#Allmaps").append("<div class='col-md-3 col-sm-3 col-height-3'><div class='tnmap'><div class='image'><a href='assets/admin3/pdf/"  + link + ".pdf' target='_blank' ><img  class='miniature' src='assets/admin3/img/" + image + ".jpg' alt='"  + adminName  +   "-Map'></a></div><a href='assets/admin3//pdf/"  + link + ".pdf' target='_blank' ><h3>" + adminName + "</h3></a><hr/><aside>" + titre + " </aside></div></div>");
+                $("#AllAdmin3").append("<div class='col-md-3 col-sm-3 col-height-3'><div class='tnmap'><div class='image'><a href='assets/admin3/pdf/"  + link + ".pdf' target='_blank' ><img  class='miniature' src='assets/admin3/img/" + image + ".jpg' alt='"  + adminName  +   "-Map'></a></div><a href='assets/admin3//pdf/"  + link + ".pdf' target='_blank' ><h3>" + adminName + "</h3></a><hr/><aside>" + titre + "  </aside></div></div>");
+                nbMaps++;
+            }
+            
             $("#countAdmin3").html("<figure data-from='1' data-to='"+nbMaps+"'>1</figure><aside>Divisions administratives niveau 3</aside><aside class='numbers-admin-s'>(Admin 3)</aside>");
 
         });
